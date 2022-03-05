@@ -20,13 +20,13 @@
 //}
 
 
-pipelineJob('Helm-Deploy') {
+pipelineJob('k8s-app-deploy') {
  configure { flowdefinition ->
    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
        'userRemoteConfigs' {
          'hudson.plugins.git.UserRemoteConfig' {
-           'url'("https://github.com/MunishLagoo/jenkins.git")
+           'url'("https://github.com/MunishLagoo/k8s-jenkins.git")
            //'url'('https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps60/_git/frontend')
          }
        }
@@ -43,13 +43,13 @@ pipelineJob('Helm-Deploy') {
 }
 
 
-pipelineJob('k8s-DB-Deploy') {
+pipelineJob('k8s-all-backend-Deploy') {
  configure { flowdefinition ->
    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
        'userRemoteConfigs' {
          'hudson.plugins.git.UserRemoteConfig' {
-           'url'("https://github.com/MunishLagoo/jenkins.git")
+           'url'("https://github.com/MunishLagoo/k8s-jenkins.git")
            //'url'('https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps60/_git/frontend')
          }
        }
@@ -59,7 +59,7 @@ pipelineJob('k8s-DB-Deploy') {
          }
        }
      }
-     'scriptPath'('Jenkinsfile-all-components')
+     'scriptPath'('Jenkinsfile-all-backend-components')
      'lightweight'(true)
    }
  }
