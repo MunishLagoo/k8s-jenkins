@@ -20,7 +20,7 @@
 //}
 
 
-pipelineJob('k8s-app-deploy') {
+pipelineJob('k8s-all-app-deploy') {
  configure { flowdefinition ->
    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -36,7 +36,7 @@ pipelineJob('k8s-app-deploy') {
          }
        }
      }
-     'scriptPath'('Jenkinsfile-helm-deploy')
+     'scriptPath'('k8s-helm-deploy-jenkinsfile')
      'lightweight'(true)
    }
  }
@@ -59,7 +59,7 @@ pipelineJob('k8s-all-backend-Deploy') {
          }
        }
      }
-     'scriptPath'('Jenkinsfile-all-backend-components')
+     'scriptPath'('k8s-backend-components-jenkinsfile')
      'lightweight'(true)
    }
  }
