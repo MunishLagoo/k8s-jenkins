@@ -7,7 +7,7 @@ def call(Map params = [:]) {
     pipeline {
         agent {label params.LABEL}
         environment {
-            NEXUS = credentials("NEXUS")
+            //NEXUS = credentials("NEXUS")
         }
         stages {
             stage('Labeling Build') {
